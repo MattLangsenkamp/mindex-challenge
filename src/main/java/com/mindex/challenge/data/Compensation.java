@@ -6,6 +6,7 @@ public class Compensation {
     private Employee employee;
     // making assumption salary can have cents
     private double salary;
+    // mongo has built in support for java Instant type
     private Instant effectiveDate;
 
     public Compensation() {
