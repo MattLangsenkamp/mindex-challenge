@@ -23,8 +23,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
     public ReportingStructure read(String id) {
         LOG.debug("Computing employee reportingStructure dynamically for employee id [{}]", id);
 
-        Employee employee = employeeService.read(id);
-        BuildReportingStructureTree(employee);
+        Employee employee = employeeService.read(id, -1);
         int numberOfReports = TraverseReportingStructureTree(employee);
         ReportingStructure reportingStructure = new ReportingStructure();
         reportingStructure.setEmployee(employee);
@@ -42,29 +41,5 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
             }
         }
         return count;
-    }
-
-    private void BuildReportingStructureTree(Employee employee) {
-        List<Employee> directReports = employee.getDirectReports();
-        if (directReports != null) {
-            List<Employee> fullDirectReports = new ArrayList<Employee>();
-            // making assumption reporting structure cannot be cyclic
-            for (Employee e : directReports) {
-                Employee employeeToTraverse = PotentiallyRefetchEmployee(e);
-                BuildReportingStructureTree(employeeToTraverse);
-                fullDirectReports.add(employeeToTraverse);
-            }
-            employee.setDirectReports(fullDirectReports);
-        }
-    }
-
-    private Employee PotentiallyRefetchEmployee(Employee employee) {
-        Employee returnedEmployee = employee;
-        // making assumption that employee with no first or last name is just a class with the id
-        // and not a full employee
-        if (employee.getFirstName() == null || employee.getLastName() == null) {
-            returnedEmployee = employeeService.read(employee.getEmployeeId());
-        }
-        return returnedEmployee;
     }
 }

@@ -27,4 +27,9 @@ public class DataBootstrapTest {
         assertEquals("Development Manager", employee.getPosition());
         assertEquals("Engineering", employee.getDepartment());
     }
+
+    @Test
+    public void testCompensation() {
+
+    }
 }

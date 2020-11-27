@@ -1,0 +1,23 @@
+[
+  {
+      "employee": {
+          "employeeId" : "03aa1462-ffa9-4978-901b-7c001562cf6f"
+      },
+      "salary": 10,
+      "effectiveDate": "2020-11-26T04:35:59.230414638Z"
+  },
+  {
+    "employee": {
+        "employeeId" : "b7839309-3348-463b-a7e3-5de1c168beb3"
+    },
+    "salary": 10,
+    "effectiveDate": "2021-12-26T04:35:59.230414638Z"
+  },
+  {
+    "employee": {
+        "employeeId" : "62c1084e-6e34-4630-93fd-9153afb65309"
+    },
+    "salary": 10,
+    "effectiveDate": "2019-10-26T04:35:59.230414638Z"
+  }
+]
