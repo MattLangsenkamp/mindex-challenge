@@ -34,7 +34,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee read(String id) {
         LOG.debug("Reading employee with id [{}]", id);
 
-        Employee employee = employeeRepository.findByEmployeeId(id);
+        Employee employee;
+        employee = employeeRepository.findByEmployeeId(id);
 
         if (employee == null) {
             throw new RuntimeException("Invalid employeeId: " + id);
